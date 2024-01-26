@@ -1,0 +1,154 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.bunny.net/css?family=eb-garamond:400,400i,500,500i,600,600i,700,700i,800,800i|noto-color-emoji:400|noto-emoji:300,400,500,600,700');
+@import url('../fontawesome/css/all.min.css');
+:root {
+    --font-family: Inter, ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji';
+    font-feature-settings: 'liga' 1, 'calt' 1 !important;
+    cursor: none;
+}
+@supports (font-variation-settings: normal) {
+    :root { --font-family: InterVariable, ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji'; }
+}
+.website{
+  display: flex;
+  height: 100vh;
+  width: 100vh;
+  margin: 0px;
+}
+.site-wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.grid {
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .grid-item {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: transparent;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .blur{
+    position: fixed;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.575);
+    backdrop-filter: blur(100px) saturate(200%);
+    -webkit-backdrop-filter: blur(100px) saturate(200%);
+    width: 100%;
+    height: 100%;
+  }
+  .site{
+    position: fixed;
+    display: flex;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    justify-items: center;
+  } 
+  .header{
+    position: absolute;
+    display: flex;
+    top: 20%;
+  }
+  .header-container{
+    position: absolute;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+  }
+  .font-serif{
+    font-family: 'EB Garamond', 'Times New Roman', Times, ui-serif, serif, 'Noto Color Emoji', 'Noto Emoji' !important;
+  }
+  .header-rounded-img{
+    border-radius: 7px;
+  }
+  .menu{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    top: 85%;
+    transform: translateX(-50%);
+    background-color: #0F4C81;
+    border: none !important;
+    outline: none;
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+    transition: transform, background-color;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+  }
+  .menu:hover{
+    transform: translateX(-50%) scale(1.04);
+  }
+  .menu:active{
+    transform: translateX(-50%) scale(0.90);
+  }
+  .arrow-continue{
+    position: absolute;
+    font-size: 170px;
+    top: 80%;
+  }
+  .menu-center{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+  }
+  .menu > i{
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    font-size: 1.75rem;
+    opacity: 0;
+    transition: transform, opacity;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+  }
+  .cursor{
+    position: absolute;
+    z-index: 3333;
+    background-color: whitesmoke;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    opacity: 0.50;
+  }
+  /*
+  nav {
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .nav-links {  
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: clamp(2rem, 2vw, 3rem);
+    padding: 0rem clamp(1rem, 2vw, 2rem);
+    transform: translateY(70%) scale(0.9);
+    transition: transform 500ms cubic-bezier(.13,.53,.38,.97); 
+  }
+  */
