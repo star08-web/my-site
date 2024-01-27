@@ -1,9 +1,8 @@
 let menu = document.getElementById("menu")
 let closeicn = document.getElementById("close-icon-menu")
 let openicn = document.getElementById("open-icon-menu")
-let cursor = document.querySelector('.cursor');
+let navbar = document.querySelector('.navbar');
 menu.addEventListener("mouseenter", () => {
-    cursor.style.background = "salmon"
     if (document.body.dataset.nav === "false"){
         closeicn.style.opacity = 0
         openicn.style.opacity = 1
@@ -13,7 +12,6 @@ menu.addEventListener("mouseenter", () => {
     }
 })
 menu.addEventListener("mouseleave", () => {
-    cursor.style.background = "whitesmoke"
     if (document.body.dataset.nav === "false"){
         closeicn.style.opacity = 0
         openicn.style.opacity = 0
@@ -24,11 +22,17 @@ menu.addEventListener("mouseleave", () => {
 })
 menu.addEventListener("click", () => {
     document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
-    if (document.body.dataset.nav === "false"){
-        closeicn.style.opacity = 0
-        openicn.style.opacity = 1
+    menu.classList.toggle("menu-upper");
+
+    if (document.body.dataset.nav === "false") {
+        closeicn.style.opacity = 0;
+        openicn.style.opacity = 1;
+        navbar.classList.remove("open");
+        menu.classList.remove("toggled");
     } else {
-        openicn.style.opacity = 0
-        closeicn.style.opacity = 1
+        openicn.style.opacity = 0;
+        closeicn.style.opacity = 1;
+        navbar.classList.add("open");
+        menu.classList.add("toggled");
     }
-})
+});
