@@ -36,3 +36,7 @@ menu.addEventListener("click", () => {
         menu.classList.add("toggled");
     }
 });
+
+function replaceURL(uri){
+    window.location.replace(uri)
+}
