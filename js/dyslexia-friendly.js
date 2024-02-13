@@ -1,4 +1,4 @@
-let trigger = document.getElementById('opn-dys');
+let trigger = document.getElementById('d-triggerer');
 let clicked = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,22 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 trigger.addEventListener('click', () => {
-    if (clicked !== 5){
-        clicked = clicked + 1 ;
-    } else {
-        clicked = 0
         if (!checkCookie('d-enabled')){
-            alert('[Debug] Dyslexia Friendly Mode activated');
-            console.log('[Debug] Dyslexia Friendly Mode activated');
+            alert('Dyslexia Friendly Mode activated');
+            console.log('Dyslexia Friendly Mode activated');
             createCookie('d-enabled', true, 360);
             optimizesited(true);
         } else {
-            alert('[Debug] Dyslexia Friendly Mode disactivated');
-            console.log('[Debug] Dyslexia Friendly Mode disactivated');
+            alert('Dyslexia Friendly Mode disactivated');
+            console.log('Dyslexia Friendly Mode disactivated');
             deleteCookie('d-enabled');
             optimizesited(false);
         }
-    }
 });
 
 function optimizesited(enabled){
@@ -37,7 +32,7 @@ function optimizesited(enabled){
         while (blurElements.length > 0) {
             blurElements[0].remove();
         }
-        const stylesheet = ":root{ --font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', ui-sans-serif, sans-serif, 'Noto Emoji' !important; --background-color: wheat !important;} .font-csn{font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', ui-sans-serif, sans-serif, 'Noto Emoji' !important;} h1,h2,h3,h4,h5,h6,p,button,div,:root,html,body{color: black !important;} .nav-link-label{color: white !important;}";
+        const stylesheet = ":root{ --font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', ui-sans-serif, sans-serif, 'Noto Emoji' !important; --background-color: wheat !important;} .font-csn{font-family: var(--font-family) !important;} h1,h2,h3,h4,h5,h6,p,button,div,:root,html,body{color: black !important;} .nav-link-label{color: white !important;}";
         setStyleTag(stylesheet, 'd-style__');
         document.body.dataset.theme = "light"
     } else {
