@@ -105,6 +105,7 @@
     align-items: center;
     align-content: center;
     top: 85%;
+    left: 50%;
     transform: translateX(-50%);
     background-color: #0F4C81;
     border: none !important;
@@ -227,6 +228,44 @@
   }
   .d-triggerer:active{
     transform: translateX(-50%) scale(0.90);
+  }
+  .notify-bar{
+    position: fixed !important;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    background-color: #020d57;
+    width: 100%;
+    height: 0%;
+    transition: all 150ms;
+  }
+  .notify-bar-content{
+    display: none;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+  }
+  .notify-bar.open > .notify-bar-content{
+    display: flex;
+  }
+  .notify-bar.open{
+    height: 5rem;
+  }
+  .notify-bar-content > i{
+    color: white !important;
+    font-size: 1.25rem;
+  }
+  .notify-bar-content > p{
+    color: white !important;
+    font-size: 1.25rem;
+    margin: 0px;
+  }
+  p,h1,h2,h3,h4,h5,h6,span{
+    cursor: text;
   }
   @media only screen and (max-width: 768px) {
     .navbar {

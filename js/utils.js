@@ -27,3 +27,34 @@ function setStyleTag(cssCode, id="") {
 function deleteCookie(cookieName) {
     document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
+function isBrowserSupported() {
+    var userAgent = window.navigator.userAgent;
+    var msie = userAgent.indexOf('MSIE ');
+    var trident = userAgent.indexOf('Trident/');
+
+    if (msie > 0 || trident > 0) {
+        return false;
+    }
+    return true;
+}
+
+function replaceURL(uri){
+    window.location.replace(uri)
+}
+
+function copyToClipboard(link) {
+    var tempInput = document.createElement("input");
+    tempInput.value = link;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    spawnnotify('Link copiato negli appunti', 'success');
+}
+window.envtype = 'dev'; // dev oppure prod
+if (window.envtype === 'prod') {
+    document.querySelectorAll('#remove-prod').forEach(element => {
+        element.remove();
+    });
+}

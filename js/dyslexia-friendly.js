@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 trigger.addEventListener('click', () => {
         if (!checkCookie('d-enabled')){
-            alert('Dyslexia Friendly Mode activated');
+            spawnnotify('Dyslexia Friendly Mode activated');
             console.log('Dyslexia Friendly Mode activated');
             createCookie('d-enabled', true, 360);
             optimizesited(true);
         } else {
-            alert('Dyslexia Friendly Mode disactivated');
+            spawnnotify('Dyslexia Friendly Mode disactivated');
             console.log('Dyslexia Friendly Mode disactivated');
             deleteCookie('d-enabled');
             optimizesited(false);
