@@ -3,7 +3,7 @@ let videocontainer = document.getElementById('videocontainer');
 
 async function getVideosFromChannel(maxResults = 10) {
     try {
-        apiUrl = `http://fetchyt.star08-web.workers.dev/?maxResults=${maxResults}`;
+        apiUrl = `https://fetchyt.star08-web.workers.dev/?maxResults=${maxResults}`;
         const response = await fetch(apiUrl);
         
         if (!response.ok) {
