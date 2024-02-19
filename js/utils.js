@@ -52,9 +52,3 @@ function copyToClipboard(link) {
     document.body.removeChild(tempInput);
     spawnnotify('Link copiato negli appunti', 'success');
 }
-window.envtype = 'dev'; // dev oppure prod
-if (window.envtype === 'prod') {
-    document.querySelectorAll('#remove-prod').forEach(element => {
-        element.remove();
-    });
-}

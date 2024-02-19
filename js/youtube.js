@@ -1,17 +1,9 @@
 let apiKey = '';
 let videocontainer = document.getElementById('videocontainer');
 
-if (window.envtype === 'dev') {
-    apiKey = window.yt_api_key;
-} else {
-    apiKey = window.env.YT_API_KEY;
-}
-
-const channelId = 'UCSi17CVmpt6HZCOfwg7g3_w';
-
-async function getVideosFromChannel(channelId, apiKey, maxResults = 10) {
+async function getVideosFromChannel(maxResults = 10) {
     try {
-        const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=${maxResults}&key=${apiKey}`;
+        apiUrl = `http://fetchyt.star08-web.workers.dev/?maxResults=${maxResults}`;
         const response = await fetch(apiUrl);
         
         if (!response.ok) {
@@ -24,7 +16,7 @@ async function getVideosFromChannel(channelId, apiKey, maxResults = 10) {
             return {
                 title: item.snippet.title,
                 videoId: item.id.videoId,
-                thumbnail: item.snippet.thumbnails.default.url
+                thumbnail: item.snippet.thumbnails.high.url
             };
         });
         
@@ -36,7 +28,7 @@ async function getVideosFromChannel(channelId, apiKey, maxResults = 10) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const videos = await getVideosFromChannel(channelId, apiKey, 10);
+    const videos = await getVideosFromChannel(30);
     videos.forEach(element => {
         const video = document.createElement('article');
         video.innerHTML = `
