@@ -29,16 +29,16 @@ function deleteCookie(cookieName) {
 }
 
 function replaceURL(uri){
-    window.location.replace(uri)
+    window.location.href = uri
 }
 
-function copyToClipboard(link) {
+function copyToClipboard(content, type="link") {
     var tempInput = document.createElement("input");
-    tempInput.value = link;
+    tempInput.value = content;
     document.body.appendChild(tempInput);
     tempInput.select();
     tempInput.setSelectionRange(0, 99999);
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    spawnnotify('Link copiato negli appunti', 'success');
+    spawnnotify(`${type} copiato negli appunti`, 'success')
 }
