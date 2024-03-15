@@ -3,13 +3,18 @@
 @import url('../fontawesome/css/all.min.css');
 @import url('../fonts/computer-says-no/computer-says-no.css');
 @import url('../fonts/opendyslexic/opendyslexic.css');
+@import url('../fonts/firacode/fira_code.css');
 :root {
     --font-family: Inter, ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji';
     font-feature-settings: 'liga' 1, 'calt' 1 !important;
     scroll-behavior: smooth;
 }
+code, kbd, pre, samp {
+  --font-family: 'Fira Code', ui-monospace, monospace, 'Noto Color Emoji', 'Noto Emoji';
+}
 @supports (font-variation-settings: normal) {
     :root { --font-family: InterVariable, ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji'; }
+    code, kbd, pre, samp {--font-family: 'Fira Code VF', ui-monospace, monospace, 'Noto Color Emoji', 'Noto Emoji';}
 }
 ::-webkit-scrollbar {
   width: 20px;
