@@ -1,7 +1,6 @@
 @import url('https://rsms.me/inter/inter.css');
-@import url('https://fonts.bunny.net/css?family=noto-color-emoji:400|noto-emoji:300,400,500,600,700');
+@import url('https://fonts.bunny.net/css?family=itim:400|nunito:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|family=noto-color-emoji:400|noto-emoji:300,400,500,600,700');
 @import url('../fontawesome/css/all.min.css');
-@import url('../fonts/computer-says-no/computer-says-no.css');
 @import url('../fonts/opendyslexic/opendyslexic.css');
 @import url('../fonts/firacode/fira_code.css');
 :root {
@@ -93,8 +92,8 @@ code, kbd, pre, samp {
     justify-content: center;
     justify-items: center;
   }
-  .font-csn{
-    font-family: 'Computer Says No', ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji' !important;
+  .font-nunito{
+    font-family: 'Nunito', ui-sans-serif, sans-serif, 'Noto Color Emoji', 'Noto Emoji' !important;
   }
   .header-rounded-img{
     border-radius: 7px;
@@ -166,7 +165,9 @@ code, kbd, pre, samp {
     z-index: 1;
     overflow: hidden;
     transition: all 150ms;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(100px) saturate(180%);
+    border-radius: 15px; 
   }
   .navbar.open {
     height: 90vh;
@@ -190,7 +191,7 @@ code, kbd, pre, samp {
     color: white;
     font-size: 1.25rem;
     margin: 0rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   
   .nav-links > .nav-link > .nav-link-image {
@@ -277,9 +278,10 @@ code, kbd, pre, samp {
   @media only screen and (max-width: 844px) {
     .navbar {
       height: auto;
-      background-color: black;
+      border-radius: 0px;
       overflow-y: auto;
       transition: all 150ms;
+      background-color: rgba(0, 0, 0, 0.589);
     }
     .menu-upper{
       top:1%;
