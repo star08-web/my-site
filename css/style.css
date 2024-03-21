@@ -167,6 +167,7 @@ code, kbd, pre, samp {
     transition: all 150ms;
     background-color: rgba(0, 0, 0, 0.425);
     backdrop-filter: blur(100px) saturate(180%);
+    -webkit-backdrop-filter: blur(100px) saturate(180%);
     border-radius: 15px; 
   }
   .navbar.open {
