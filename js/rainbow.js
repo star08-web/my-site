@@ -1,12 +1,17 @@
 function initbg() {
   const gridContainer = document.querySelector('.grid-bg');
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const gridSize = Math.ceil((screenWidth * screenHeight) / 2500);
   const gridItems = [];
-  for (let i = 0; i < 2000; i++) {
+
+  for (let i = 0; i < gridSize; i++) {
     const gridItem = document.createElement('div');
     gridItem.classList.add('grid-item');
     gridContainer.appendChild(gridItem);
     gridItems.push(gridItem);
   }
+
   document.addEventListener('mousemove', handleMouseMove);
 }
 
@@ -41,4 +46,4 @@ function getColor() {
   return color;
 }
 
-(function() {document.addEventListener('DOMContentLoaded', initbg());})();
+document.addEventListener('DOMContentLoaded', initbg);
