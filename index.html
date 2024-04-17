@@ -40,7 +40,7 @@
                 <div class="header-container">
                     <div class="header-description">
                         <p>
-                            sono uno studente di 15 anni dall'italia
+                            sono uno studente di <span id="age"></span> anni dall'italia
                             <br>
                             mi sono sempre piaciuti i computer, ho sempre trovato interessante il modo in cui lavoravano
                         </p>
@@ -116,6 +116,11 @@
     <script src="./js/notification.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/dyslexia-friendly.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("age").textContent = calcAge("08-06-2008") 
+        })
+    </script>
     <script>        
         AOS.init()
     </script>

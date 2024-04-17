@@ -42,3 +42,26 @@ function copyToClipboard(content, type="link") {
     document.body.removeChild(tempInput);
     spawnnotify(`${type} copiato negli appunti`, 'success')
 }
+
+function calcAge(birth) {
+    var td = new Date();
+    var bdate = new Date(birth);
+    var yr = td.getFullYear() - bdate.getFullYear();
+    var tm = td.getMonth();
+    var bmonth = bdate.getMonth();
+
+    if (tm < bmonth || (tm === bmonth && td.getDate() < bdate.getDate())) {
+        yr--;
+    }
+
+    return yr;
+}
+
+// Preload Images Self Invoking Function
+document.addEventListener('DOMContentLoaded', function() {
+    let images = document.querySelectorAll('img');
+    for (let i = 0; i < images.length; i++) {
+        const preload = new Image();
+        preload.src = images[i].src;
+    }
+});

@@ -1,5 +1,4 @@
 let trigger = document.getElementById('d-triggerer');
-let clicked = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     if (checkCookie('d-enabled')){
@@ -23,14 +22,17 @@ trigger.addEventListener('click', () => {
 
 function optimizesited(enabled){
     if (enabled){
-        const gridElements = document.getElementsByClassName('grid-bg');
-        while (gridElements.length > 0) {
-            gridElements[0].remove();
-        }
-        
         const blurElements = document.getElementsByClassName('blur');
         while (blurElements.length > 0) {
             blurElements[0].remove();
+        }
+        const gridElements = document.getElementsByClassName('grid-item');
+        while (gridElements.length > 0) {
+            gridElements[0].remove();
+        }
+        const gridbg = document.getElementsByClassName('grid-bg');
+        while (gridbg.length > 0) {
+            gridbg[0].remove();
         }
         const stylesheet = ":root{ --font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', ui-sans-serif, sans-serif, 'Noto Emoji' !important; --background-color: wheat !important;} .font-nunito{font-family: var(--font-family) !important;} h1,h2,h3,h4,h5,h6,p,button,div,:root,html,body{--color: black !important;} .nav-link-label{--color: white !important;} .navbar{backdrop-filter: blur(0px) !important; background-color: black !important; border-radius:0px !important;}";
         setStyleTag(stylesheet, 'd-style__');

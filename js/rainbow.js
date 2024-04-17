@@ -16,12 +16,24 @@ function initbg() {
 }
 
 function handleMouseMove(event) {
+  const hexcolors = [
+    '#4B0082',
+    '#483D8B',
+    '#8A2BE2',
+    '#9400D3',
+    '#9932CC',
+    '#8B008B',
+    '#800080',
+    '#9370DB',
+    '#7B68EE',
+    '#6A5ACD'
+  ];
   const gridItems = document.querySelectorAll('.grid-item');
   gridItems.forEach((gridItem) => {
-    const isMouseOver = isMouseOverElement(event, gridItem);
+  const isMouseOver = isMouseOverElement(event, gridItem);
 
     if (isMouseOver) {
-      const randomColor = getColor();
+      const randomColor = hexcolors[Math.floor(Math.random() * hexcolors.length)];
       gridItem.style.backgroundColor = randomColor;
     }
   });
@@ -35,15 +47,6 @@ function isMouseOverElement(event, element) {
     event.clientY >= rect.top &&
     event.clientY <= rect.bottom
   );
-}
-
-function getColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
 }
 
 document.addEventListener('DOMContentLoaded', initbg);
