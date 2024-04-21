@@ -25,7 +25,7 @@ function setStyleTag(cssCode, id="") {
 }
 
 function deleteCookie(cookieName) {
-    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = cookieName + "=; expires=Thu, 1 Jan 0000 00:00:00 UTC; path=/;";
 }
 
 function replaceURL(uri){
@@ -44,17 +44,23 @@ function copyToClipboard(content, type="link") {
 }
 
 function calcAge(birth) {
-    var td = new Date();
-    var bdate = new Date(birth);
-    var yr = td.getFullYear() - bdate.getFullYear();
-    var tm = td.getMonth();
-    var bmonth = bdate.getMonth();
+    try {
+        var today = new Date();
+        var birthDate = new Date(birth.replace(/-/g, '/')); // now should work in safari/webkit/call it whatever you want, thanks apple for feeling special about date formats
+        var years = today.getFullYear() - birthDate.getFullYear();
 
-    if (tm < bmonth || (tm === bmonth && td.getDate() < bdate.getDate())) {
-        yr--;
+        if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+            years--;
+        }
+        if (isNaN(years) || years <= 0) {
+            spawnnotify('Errore durante il calcolo dell\'età, le informazioni potrebbero essere non aggiornate', 'error');
+            return 15;
+        }
+        return years;
+    } catch (error) {
+        spawnnotify(`Errore durante il calcolo dell'età ${error}`, 'error');
+        return 15;
     }
-
-    return yr;
 }
 
 // Preload Images Self Invoking Function
