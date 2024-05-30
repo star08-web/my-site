@@ -1,4 +1,3 @@
-let apiKey = '';
 let videocontainer = document.getElementById('videocontainer');
 
 async function getVideosFromChannel(maxResults = 10) {
@@ -7,7 +6,8 @@ async function getVideosFromChannel(maxResults = 10) {
         const response = await fetch(apiUrl);
         
         if (!response.ok) {
-            throw new Error('Errore nella richiesta API');
+            console.error('Errore richiesta API:', response.status, response.statusText);
+            throw new spawnnotify(`Errore richiesta API ${response.status}`, 'error');
         }
         
         const data = await response.json();
