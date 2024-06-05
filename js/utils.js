@@ -25,7 +25,8 @@ function setStyleTag(cssCode, id="") {
 }
 
 function deleteCookie(cookieName) {
-    document.cookie = cookieName + "=; expires=Thu, 1 Jan 0000 00:00:00 UTC; path=/;";
+    const date = new Date('Thu, 22 Sept 1999 00:00:00 UTC'); // haha little easter egg
+    document.cookie = cookieName + "=; expires=" + date.toUTCString() + "; path=/;";
 }
 
 function replaceURL(uri){
