@@ -1,7 +1,7 @@
 let notify = document.getElementById('notify-bar');
 let notifytext = document.getElementById('notify-text');
 let notifyicon = document.getElementById('notify-icon');
-function spawnnotify(message, status='default') {
+function spawnnotify(message, status='default', time=3000) {
   if (status == 'default') {
     notify.style.backgroundColor = '#020d57';
   } else if (status == 'success') {
@@ -22,5 +22,5 @@ function spawnnotify(message, status='default') {
     notifyicon.classList.remove('fa-circle-xmark');
     notifyicon.classList.add('fa-bell');
     notifytext.textContent = '';
-  }, 3000);
+  }, time);
 }
