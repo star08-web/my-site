@@ -4,8 +4,14 @@
 @import url('../fonts/firacode/fira_code.css');
 @import url('../fonts/blobmoji/blobmoji.css');
 @import url('../fonts/geist/geist.css');
+@import url('./theme-st08wb.css');
+
 :root {
     --font-family: 'Geist', ui-sans-serif, sans-serif, 'BlobMoji', 'Noto Color Emoji', 'Noto Emoji';
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
     font-feature-settings: 'liga' 1, 'calt' 1 !important;
     scroll-behavior: smooth;
 }
@@ -112,7 +118,7 @@ code, kbd, pre, samp {
     top: 85%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #0F4C81;
+    background-color: #052db1;
     border: none !important;
     outline: none;
     z-index: 2;
@@ -277,6 +283,20 @@ code, kbd, pre, samp {
   p,h1,h2,h3,h4,h5,h6,span{
     cursor: text;
   }
+  .filler > *{
+    color: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: default !important;
+  }
+  .filler > *::selection{
+    background-color: transparent !important;
+  }
+  a{
+    text-decoration: none;
+    color: var(--link-color) !important;
+    
+  }
   @media only screen and (max-width: 844px) {
     .navbar {
       height: auto;
@@ -308,5 +328,8 @@ code, kbd, pre, samp {
     .nav-links > .nav-link > .nav-link-image {
       width: 100%;
       max-width: none;
+    }
+    .filler{
+      display: none;
     }
   }

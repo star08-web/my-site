@@ -1,4 +1,5 @@
-let videocontainer = document.getElementById('videocontainer');
+const videocontainer = document.getElementById('videocontainer');
+let blockstatus = NaN;
 
 async function getVideosFromChannel(maxResults = 10) {
     try {
@@ -29,17 +30,29 @@ async function getVideosFromChannel(maxResults = 10) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const videos = await getVideosFromChannel(30);
+    let grid = undefined;
     videos.forEach(element => {
-        const video = document.createElement('article');
-        video.innerHTML = `
+        if (blockstatus === 2 || isNaN(blockstatus)) {
+            if (!isNaN(blockstatus)) {
+                videocontainer.appendChild(document.createElement('br'));
+            }
+            grid = document.createElement('div');
+            grid.classList.add('grid');
+            videocontainer.appendChild(grid);
+            blockstatus = 0;
+        }
+        const video = document.createElement('div');
+        const box = document.createElement('article');
+        box.innerHTML = `
         <header>
-            <img src="${element.thumbnail}" alt="${element.title}">
+            <img src="${element.thumbnail}" alt="${element.title}" style="border-radius: 7px;">
         </header>
         <h2>${element.title}</h2>
         <button onclick="replaceURL('https://www.youtube.com/watch?v=${element.videoId}')"><i class="fa-regular fa-circle-play"></i> Guarda su YouTube</button>
         <button onclick="copyToClipboard('https://www.youtube.com/watch?v=${element.videoId}')"><i class="fa-solid fa-link"></i> Copia link</button>
         `;
-        videocontainer.appendChild(video);
-        for (let i = 0; i < 8; i++) {videocontainer.appendChild(document.createElement('br'));}
+        video.appendChild(box);
+        grid.appendChild(video);
+        blockstatus = blockstatus + 1;
     });
 });
