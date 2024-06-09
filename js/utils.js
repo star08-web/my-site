@@ -51,7 +51,7 @@ function calcAge(birth) {
         var years = today.getFullYear() - birthDate.getFullYear();
 
         if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-            years--;
+            years + 1;
         }
         if (isNaN(years) || years <= 0) {
             spawnnotify('Errore durante il calcolo dell\'età, le informazioni potrebbero essere non aggiornate', 'error');
