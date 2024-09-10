@@ -26,6 +26,15 @@
     <link rel="manifest" href="img/site.webmanifest">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="canonical" href="https://star08-web.pages.dev/branding" />
+    <style>
+        .no-logoandfont {
+            font-family: 'Itim', 'Comic Sans MS', ui-sans-serif, sans-serif, 'BlobMoji', 'Noto Color Emoji', 'Noto Emoji'; 
+            --font-size: 30px;
+        }
+        .no-logoandfont > img {
+            filter: invert(1);
+        }
+    </style>
 </head>
 <body data-theme="dark" data-nav="false">
     <div class="site-wrap">
@@ -75,7 +84,9 @@
                         <header>
                             <p style="color: #42d660;"><i class="fa-solid fa-thumbs-up"></i> Ok</p>
                         </header>
-                        Sito fatto con l'aiuto di <a href="https://star08-web.github.io">Star08-web</a>
+                        Applicazione fatta con l'aiuto di <a href="https://star08-web.github.io">Star08-web</a>
+                        <br>
+                        &copy; [tuonome]
                     </article>
                 </div>
                 <div data-AOS="fade-left">
@@ -95,7 +106,7 @@
                 <br>
                 se il mio logo è usato insieme ad altri loghi assicurati di lasciare margine e di renderlo il più simile alle dimensioni e al contrasto degli stessi
                 <br>
-                la mia tipografia è composta perlopiù da <a href="https://vercel.com/font" target="_blank" rel="noopener noreferrer">Geist</a> e <a href="https://fonts.google.com/specimen/exo+2">Exo 2</a>
+                la mia tipografia è composta perlopiù da <a href="https://www.fontshare.com/fonts/satoshi" target="_blank" rel="noopener noreferrer">Satoshi</a> e <a href="https://fonts.google.com/specimen/exo+2">Exo 2</a>
                 <br>
                 sono entrambi font gratuiti, quindi usali dove possibile se vuoi rappresentarmi nei media (ad esempio un post di instagram)
                 <br>
@@ -118,7 +129,7 @@
                         <br>
                         <br>
                         <div class="grid">
-                            <div>
+                            <div data-tooltip="star08-web" style="border-bottom: none !important;">
                                 <img src="img/logo.webp" width="120" height="120" class="header-rounded-img" alt="">
                             </div>
                         <div>
@@ -135,7 +146,7 @@
                         <header>
                             <p style="color: red;"><i class="fa-solid fa-thumbs-down"></i> Non ok</p>
                         </header>
-                        <p style="font-family: 'Itim', 'Comic Sans MS', ui-sans-serif, sans-serif, 'BlobMoji', 'Noto Color Emoji', 'Noto Emoji'; font-size: 30px;"><img src="img/logo.webp" alt="" width="50" height="50"> star08-web fan page official</p>
+                        <p class="no-logoandfont"><img src="img/logo.webp" alt="" width="50" height="50"> star08-web fan page official</p>
                     </article>
                 </div>
             </div>

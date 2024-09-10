@@ -2,6 +2,8 @@ const videocontainer = document.getElementById('videocontainer');
 let miniplayerBtns = document.querySelectorAll('#mp-btn');
 let blockstatus = NaN;
 const miniplayerStatus = {};
+let miniplayerPlaying = false;
+let currentVideo = undefined;
 
 function getVideosFromChannel(maxResults = 10) {
     return new Promise((resolve, reject) => {
@@ -83,17 +85,25 @@ function handleMiniplayer(elem){
     const header = elem.parentElement.querySelector('header');
     const thumbnail = header.querySelector('#thumbnail');
     const miniplayer = header.querySelector('#miniplayer');
+    if (miniplayerPlaying && currentVideo !== videoId) {
+        spawnnotify("Chiudi il miniplayer corrente prima di aprirne un altro", "warning");
+        return;
+    }
     if (MPS(videoId, 'get') !== 'paused') {
         miniplayer.src = '';
         miniplayer.style.display = 'none';
         thumbnail.style.display = 'block';
         MPS(videoId, 'set', 'paused');
+        miniplayerPlaying = false;
+        currentVideo = undefined;
         return;
     }
     miniplayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
     miniplayer.style.display = 'block';
     thumbnail.style.display = 'none';
     MPS(videoId, 'set', 'playing');
+    miniplayerPlaying = true;
+    currentVideo = videoId;
 }
 
 setInterval(() => {
