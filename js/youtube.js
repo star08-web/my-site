@@ -6,6 +6,29 @@ let miniplayerPlaying = false;
 let currentVideo = undefined;
 
 function getVideosFromChannel(maxResults = 10) {
+    if (isArchived()) {
+        const disabledstatusCSS = `
+        .disabled{
+            --blockquote-border-color: #cd0b28 !important;
+        }`;
+        setStyleTag(disabledstatusCSS, 'yt-api-disabled-blockquote-border-color');
+        const disabledstatus = document.createElement('blockquote');
+        disabledstatus.classList.add('disabled');
+        const h4Disabled = document.createElement('h4');
+        h4Disabled.textContent = "API YouTube disabilitata";
+        const pDisabled = document.createElement('p');
+        pDisabled.textContent = "La API di youtube è stata disabilitata perché il sito è in modalità archivio, per visualizzare i video visita il canale YouTube.";
+        const aDisabled = document.createElement('a');
+        aDisabled.href = "https://youtube.com/@star08-web";
+        aDisabled.textContent = "Visita il canale YouTube";
+        disabledstatus.appendChild(h4Disabled);
+        disabledstatus.appendChild(pDisabled);
+        disabledstatus.appendChild(aDisabled);
+        videocontainer.appendChild(disabledstatus);
+        return new Promise((resolve, reject) => {
+            reject(new Error("API YouTube disabilitata"));
+        });
+    }
     return new Promise((resolve, reject) => {
         const apiUrl = `https://fetchyt.star08-web.workers.dev/?maxResults=${maxResults}`;
         const request = new XMLHttpRequest();
@@ -23,7 +46,7 @@ function getVideosFromChannel(maxResults = 10) {
                 });
                 resolve(videos);
             } else {
-                const errString = "Si è verificato il seguent errore:" + request.status;
+                const errString = "Si è verificato il seguente errore:" + request.status;
                 spawnnotify(errString, "error");
                 console.error(errString);
                 reject(new Error(errString));
@@ -31,7 +54,7 @@ function getVideosFromChannel(maxResults = 10) {
         };
 
         request.onerror = function () {
-            const errString = "Si è verificato il seguent errore:" + request.status;
+            const errString = "Si è verificato il seguente errore:" + request.status;
             spawnnotify(errString, "error");
             console.error(errString);
             reject(new Error(errString));
@@ -106,9 +129,11 @@ function handleMiniplayer(elem){
     currentVideo = videoId;
 }
 
-setInterval(() => {
+const searchMPBTNS = setInterval(() => {
     if (miniplayerBtns.length === 0) {
         miniplayerBtns = document.querySelectorAll('#mp-btn');
+    } else {
+        return clearInterval(searchMPBTNS);
     }
     miniplayerBtns.forEach(miniplayerBtn => {
         miniplayerBtn.addEventListener('click', function () {
@@ -130,4 +155,8 @@ function MPS(vID, what, status = NaN){
             miniplayerStatus[vID] = status;
             break;
     }
+}
+
+function isArchived(){
+    return window.location.href.includes('archive');
 }
