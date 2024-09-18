@@ -64,6 +64,19 @@ function calcAge(birth) {
     }
 }
 
+function isMobile() {
+    let mobile = false;
+    let userAgent = navigator.userAgent;
+    let mobileAgents = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone'];
+    for (let i = 0; i < mobileAgents.length; i++) {
+        if (userAgent.indexOf(mobileAgents[i]) > -1) {
+            mobile = true;
+            break;
+        }
+    }
+    return mobile;
+}
+
 // Preload Images Self Invoking Function
 document.addEventListener('DOMContentLoaded', function() {
     let images = document.querySelectorAll('img');

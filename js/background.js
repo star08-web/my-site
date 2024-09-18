@@ -4,18 +4,6 @@ function initbg() {
   const screenHeight = window.innerHeight;
   const gridSize = Math.ceil((screenWidth * screenHeight) / 2500);
   const gridItems = [];
-
-  for (let i = 0; i < gridSize; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-    gridContainer.appendChild(gridItem);
-    gridItems.push(gridItem);
-  }
-
-  document.addEventListener('mousemove', handleMouseMove);
-}
-
-function handleMouseMove(event) {
   const hexcolors = [
     '#4B0082',
     '#483D8B',
@@ -28,10 +16,34 @@ function handleMouseMove(event) {
     '#7B68EE',
     '#6A5ACD'
   ];
+
+  for (let i = 0; i < gridSize; i++) {
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
+    gridContainer.appendChild(gridItem);
+    gridItems.push(gridItem);
+  }
+
+  function AutoBG(hexcolors){
+    const gridItems = document.querySelectorAll('.grid-item');
+    setInterval(() => {
+      const randomTile = gridItems[Math.floor(Math.random() * gridItems.length)];
+      const randomColor = hexcolors[Math.floor(Math.random() * hexcolors.length)];
+      randomTile.style.backgroundColor = randomColor;
+    }, 450);  
+  }
+
+  if (isMobile()) {
+    AutoBG(hexcolors);
+  } else {
+    document.addEventListener('mousemove', (event) => handleMouseMove(event, hexcolors));
+  }
+}
+
+function handleMouseMove(event, hexcolors) {
   const gridItems = document.querySelectorAll('.grid-item');
   gridItems.forEach((gridItem) => {
   const isMouseOver = isMouseOverElement(event, gridItem);
-
     if (isMouseOver) {
       const randomColor = hexcolors[Math.floor(Math.random() * hexcolors.length)];
       gridItem.style.backgroundColor = randomColor;

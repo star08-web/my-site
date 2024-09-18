@@ -13,6 +13,7 @@
     --switch-color: var(--primary-inverse);
     --switch-checked-background-color: var(--primary);
     scroll-behavior: smooth;
+    color-scheme: only dark !important;
 }
 code, kbd, pre, samp {
   --font-family: 'Fira Code', ui-monospace, monospace, 'BlobMoji', 'Noto Color Emoji', 'Noto Emoji';
