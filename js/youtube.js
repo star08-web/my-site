@@ -7,13 +7,14 @@ let currentVideo = undefined;
 
 function getVideosFromChannel(maxResults = 10) {
     if (isArchived()) {
+        const disabledCSSClassname = 'yt-api-disabled-blockquote-border-color';
         const disabledstatusCSS = `
-        .disabled{
+        .${disabledCSSClassname} {
             --blockquote-border-color: #cd0b28 !important;
         }`;
-        setStyleTag(disabledstatusCSS, 'yt-api-disabled-blockquote-border-color');
+        setStyleTag(disabledstatusCSS, disabledCSSClassname);
         const disabledstatus = document.createElement('blockquote');
-        disabledstatus.classList.add('disabled');
+        disabledstatus.classList.add(disabledCSSClassname);
         const h4Disabled = document.createElement('h4');
         h4Disabled.textContent = "API YouTube disabilitata";
         const pDisabled = document.createElement('p');
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
                 video.appendChild(box);
                 grid.appendChild(video);
-                MPS(element.videoId, 'set', 'paused');
+                miniPlayerSettings(element.videoId, 'set', 'paused');
                 blockstatus = blockstatus + 1;
             });
         })
@@ -112,11 +113,11 @@ function handleMiniplayer(elem){
         spawnnotify("Chiudi il miniplayer corrente prima di aprirne un altro", "warning");
         return;
     }
-    if (MPS(videoId, 'get') !== 'paused') {
+    if (miniPlayerSettings(videoId, 'get') !== 'paused') {
         miniplayer.src = '';
         miniplayer.style.display = 'none';
         thumbnail.style.display = 'block';
-        MPS(videoId, 'set', 'paused');
+        miniPlayerSettings(videoId, 'set', 'paused');
         miniplayerPlaying = false;
         currentVideo = undefined;
         return;
@@ -124,7 +125,7 @@ function handleMiniplayer(elem){
     miniplayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
     miniplayer.style.display = 'block';
     thumbnail.style.display = 'none';
-    MPS(videoId, 'set', 'playing');
+    miniPlayerSettings(videoId, 'set', 'playing');
     miniplayerPlaying = true;
     currentVideo = videoId;
 }
@@ -143,7 +144,7 @@ const searchMPBTNS = setInterval(() => {
 }, 1000);
 
 
-function MPS(vID, what, status = NaN){
+function miniPlayerSettings(vID, what, status = NaN){
     switch (what) {
         case 'get':
             return miniplayerStatus[vID];

@@ -14,7 +14,8 @@ function initbg() {
     '#800080',
     '#9370DB',
     '#7B68EE',
-    '#6A5ACD'
+    '#6A5ACD',
+    '#200054'
   ];
 
   for (let i = 0; i < gridSize; i++) {

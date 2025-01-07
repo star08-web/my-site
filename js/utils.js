@@ -46,12 +46,12 @@ function copyToClipboard(content, type="link") {
 
 function calcAge(birth) {
     try {
-        var today = new Date();
-        var birthDate = new Date(birth.replace(/-/g, '/')); // now should work in safari/webkit/call it whatever you want, thanks apple for feeling special about date formats
-        var years = today.getFullYear() - birthDate.getFullYear();
+        const today = new Date();
+        const birthDate = new Date(birth.replace(/-/g, '/')); // now should work in safari/webkit/call it whatever you want, thanks apple for feeling special about date formats
+        let years = today.getFullYear() - birthDate.getFullYear();
 
         if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-            years + 1;
+            years -= 1;
         }
         if (isNaN(years) || years <= 0) {
             spawnnotify('Errore durante il calcolo dell\'età, le informazioni potrebbero essere non aggiornate', 'error');
