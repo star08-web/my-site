@@ -4,10 +4,12 @@ let notifyicon = document.getElementById('notify-icon');
 
 function spawnnotify(message="", status='info', time=3000) {
   notify.style.backgroundColor = '#020d57';
-  notifyicon.classList.remove('fa-check-circle', 'fa-circle-xmark', 'fa-exclamation-triangle');
+  notifyicon.classList.remove('fa-check-circle', 'fa-circle-xmark', 'fa-exclamation-triangle', 'fa-bug', 'fa-bell');
   notifyicon.classList.add('fa-bell');
 
-  switch (status) {
+  const st = status.toLowerCase();
+
+  switch (st) {
     case 'info':
     case 'default':
       notify.style.backgroundColor = '#020d57';
@@ -26,6 +28,11 @@ function spawnnotify(message="", status='info', time=3000) {
       notify.style.backgroundColor = '#ffc107';
       notifyicon.classList.remove('fa-bell');
       notifyicon.classList.add('fa-exclamation-triangle');
+      break;
+    case 'debug':
+      notify.style.backgroundColor = '#7e1cc9';
+      notifyicon.classList.remove('fa-bell');
+      notifyicon.classList.add('fa-bug');
       break;
     default:
       console.error('Invalid status provided');
