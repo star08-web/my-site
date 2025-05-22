@@ -41,7 +41,12 @@ function spawnnotify(message="", status='info', time=3000) {
 
   if (message.trim() === '') {
     console.error('No message provided for notification');
-    return "Error occurred, please check console";
+    return {
+      success: false,
+      message: 'No message provided for notification',
+      SpwnType: "NOMSG",
+      duration: NaN
+    };
   }
 
   notifytext.textContent = message;
@@ -51,5 +56,10 @@ function spawnnotify(message="", status='info', time=3000) {
     notify.classList.remove('open');
     notifytext.textContent = '';
   }, time);
-  return "Notification spawned";
+  return {
+    success: true,
+    message: message,
+    SpwnType: status,
+    duration: time
+  }
 }
