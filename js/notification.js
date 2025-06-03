@@ -37,7 +37,7 @@ function spawnnotify(message = "", status = 'info', time = 3000) {
 
   let st = status.toLowerCase();
 
-  if (st === 'default'){
+  if (st === 'default') {
     st = 'info';
   }
 

@@ -16,7 +16,7 @@ function createCookie(cookieName, cookieValue, daysToExpire) {
     document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
 }
 
-function setStyleTag(cssCode, id="") {
+function setStyleTag(cssCode, id = "") {
     var styleTag = document.createElement('style');
     styleTag.type = 'text/css';
     styleTag.appendChild(document.createTextNode(cssCode));
@@ -29,11 +29,11 @@ function deleteCookie(cookieName) {
     document.cookie = cookieName + "=; expires=" + date.toUTCString() + "; path=/;";
 }
 
-function replaceURL(uri){
+function replaceURL(uri) {
     window.location.href = uri
 }
 
-function copyToClipboard(content, type="link") {
+function copyToClipboard(content, type = "link") {
     var tempInput = document.createElement("input");
     tempInput.value = content;
     document.body.appendChild(tempInput);
@@ -78,7 +78,7 @@ function isMobile() {
 }
 
 // Preload Images Self Invoking Function
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let images = document.querySelectorAll('img');
     for (let i = 0; i < images.length; i++) {
         const preload = new Image();

@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-function handleMiniplayer(elem){
+function handleMiniplayer(elem) {
     const videoId = elem.parentElement.dataset.videoId;
     const header = elem.parentElement.querySelector('header');
     const thumbnail = header.querySelector('#thumbnail');
@@ -138,13 +138,13 @@ const searchMPBTNS = setInterval(() => {
     }
     miniplayerBtns.forEach(miniplayerBtn => {
         miniplayerBtn.addEventListener('click', function () {
-            handleMiniplayer(this); 
+            handleMiniplayer(this);
         });
     });
 }, 1000);
 
 
-function miniPlayerSettings(vID, what, status = NaN){
+function miniPlayerSettings(vID, what, status = NaN) {
     switch (what) {
         case 'get':
             return miniplayerStatus[vID];
@@ -158,6 +158,6 @@ function miniPlayerSettings(vID, what, status = NaN){
     }
 }
 
-function isArchived(){
+function isArchived() {
     return window.location.href.includes('archive');
 }

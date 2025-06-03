@@ -26,12 +26,12 @@ function initbg() {
     const gridItem = document.createElement('div');
     gridItem.classList.add('grid-item');
     gridItem.dataset.index = i; // Add index for identification
-    
+
     // Apply stored color if available
     if (coloredTiles[i]) {
       gridItem.style.backgroundColor = coloredTiles[i];
     }
-    
+
     gridContainer.appendChild(gridItem);
     gridItems.push(gridItem);
   }
@@ -42,16 +42,16 @@ function initbg() {
       const randomIndex = Math.floor(Math.random() * gridItems.length);
       const randomTile = gridItems[randomIndex];
       const randomColor = hexcolors[Math.floor(Math.random() * hexcolors.length)];
-      
+
       // Update the tile color
       randomTile.style.backgroundColor = randomColor;
-      
+
       // Save the color to our storage object
       coloredTiles[randomTile.dataset.index] = randomColor;
-      
+
       // Update local storage
       localStorage.setItem('gridColors', JSON.stringify(coloredTiles));
-    }, 450);  
+    }, 450);
   }
 
   function handleMouseMove(event, hexcolors) {
@@ -59,13 +59,13 @@ function initbg() {
       const isMouseOver = isMouseOverElement(event, gridItem);
       if (isMouseOver) {
         const randomColor = hexcolors[Math.floor(Math.random() * hexcolors.length)];
-        
+
         // Update the tile color
         gridItem.style.backgroundColor = randomColor;
-        
+
         // Save the color to our storage object
         coloredTiles[gridItem.dataset.index] = randomColor;
-        
+
         // Update local storage
         localStorage.setItem('gridColors', JSON.stringify(coloredTiles));
       }
@@ -89,10 +89,23 @@ function isMouseOverElement(event, element) {
   );
 }
 
-function __BGReset(){
-  localStorage.removeItem('gridColors');
-  window.location.reload();
-  spawnnotify('Background reset to default', 'debug');
+// accent color
+
+function accent() {
+  if (localStorage.getItem('accentColor')) {
+    const colors = localStorage.getItem('colors') ? JSON.parse(localStorage.getItem('colors')) : {};
+    const css = `
+    :root {
+      --primary: ${colors.primary} !important;
+      --primary-hover: ${colors.primaryHover} !important;
+      --primary-focus: ${colors.primaryFocus} !important;
+      --primary-inverse: ${colors.primaryInverse} !important;
+      --link-color: ${colors.linkColor} !important;
+    }
+  `;
+    setStyleTag(css, '__dbg-custaccentcolor');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initbg);
+document.addEventListener('DOMContentLoaded', accent);

@@ -1,27 +1,27 @@
 let trigger = document.getElementById('d-triggerer');
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (checkCookie('d-enabled')){
+    if (checkCookie('d-enabled')) {
         optimizesited(true);
     }
 })
 
 trigger.addEventListener('click', () => {
-        if (!checkCookie('d-enabled')){
-            spawnnotify('Dyslexia Friendly Mode activated');
-            console.log('Dyslexia Friendly Mode activated');
-            createCookie('d-enabled', true, 360);
-            optimizesited(true);
-        } else {
-            spawnnotify('Dyslexia Friendly Mode disactivated');
-            console.log('Dyslexia Friendly Mode disactivated');
-            deleteCookie('d-enabled');
-            optimizesited(false);
-        }
+    if (!checkCookie('d-enabled')) {
+        spawnnotify('Dyslexia Friendly Mode activated');
+        console.log('Dyslexia Friendly Mode activated');
+        createCookie('d-enabled', true, 360);
+        optimizesited(true);
+    } else {
+        spawnnotify('Dyslexia Friendly Mode disactivated');
+        console.log('Dyslexia Friendly Mode disactivated');
+        deleteCookie('d-enabled');
+        optimizesited(false);
+    }
 });
 
-function optimizesited(enabled){
-    if (enabled){
+function optimizesited(enabled) {
+    if (enabled) {
         const blurElements = document.getElementsByClassName('blur');
         while (blurElements.length > 0) {
             blurElements[0].remove();

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Debug</title>
+    <link rel="stylesheet" href="css/pico/pico.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Pagina di Debug</h1>
+        <br>
+        <p>
+            Questa è una pagina interna di debug ed è utilizzata per testare il sito web.
+            <br>
+            Tramite questa pagina è possibile modificare o resettare impostazioni del sito web, come la modalità
+            dislessia o il tema.
+            <br>
+            Questa pagina non è destinata ad essere visualizzata dagli utenti finali e non dovrebbe essere indicizzata
+            dai motori di ricerca.
+            <br>
+            Se hai raggiunto questa pagina per errore, probabilmente hai usato un link diretto o una combinazione di
+            tasti riservata
+            <br>
+            Se questo è il tuo caso, non preoccuparti, puoi semplicemente tornare alla <a href="index.html">pagina
+                principale</a>.
+        </p>
+        <br>
+        <br>
+        <h2>
+            Stato della Validazione HTML
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <p>index.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev"
+                        alt="status">
+                </td>
+                <td>
+                    <p>devices.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev%2Fdevices"
+                        alt="status">
+                </td>
+                <td>
+                    <p>branding.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev%2Fbranding"
+                        alt="status">
+                </td>
+                <td>
+                    <p>musica.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev%2Fmusica"
+                        alt="status">
+                </td>
+                <td>
+                    <p>progetti.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev%2Fprogetti"
+                        alt="status">
+                </td>
+                <td>
+                    <p>youtube.html</p>
+                    <br>
+                    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fstar08-web.pages.dev%2Fyoutube"
+                        alt="status">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <h2>
+            Azioni di Debug
+        </h2>
+        <div class="grid">
+            <div>
+                <button onclick="__BGReset()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/refresh.png" alt="Reset Background">
+                    Reset Sfondo
+                </button>
+            </div>
+            <div>
+                <button onclick="__TReset()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/refresh.png" alt="Reset Theme">
+                    Reset Tema
+                </button>
+            </div>
+            <div>
+                <button onclick="__DReset()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/refresh.png" alt="Reset Dislessia">
+                    Reset Mod. Dislessia
+                </button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>
+            Modifica tema globale
+        </h2>
+        <br>
+        <p>
+            --primary:
+        </p>
+        <input type="color" name="accent" id="primary">
+        <br>
+        <p>
+            --primary-hover:
+        </p>
+        <br>
+        <input type="color" name="accent-hover" id="primary-hover">
+        <br>
+        <p>
+            --primary-focus:
+        </p>
+        <br>
+        <input type="color" name="accent-focus" id="primary-focus">
+        <br>
+        <p>
+            --primary-inverse:
+        </p>
+        <br>
+        <input type="color" name="accent-inverse" id="primary-inverse">
+        <br>
+        <p>
+            --link-color:
+        </p>
+        <br>
+        <input type="color" name="link-color" id="link-color">
+        <button id="saveTheme">
+            <img src="https://img.icons8.com/ios-filled/50/000000/save.png" alt="Save Theme">
+            Salva Modifiche
+        </button>
+        <br>
+        <br>
+        <br>
+        <br>
+        <small>
+            <p>
+                Icone fornite da <a href="https://icons8.com/">Icons8</a>
+            </p>
+        </small>
+    </main>
+    <div class="notify-bar" id="notify-bar">
+        <div class="notify-bar-content">
+            <p><i id="notify-icon" class="fa-solid fa-bell"></i> <span id="notify-text"></span></p>
+        </div>
+    </div>
+    <script src="js/utils.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/__debug.js"></script>
+</body>
+
+</html>
