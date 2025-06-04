@@ -4,6 +4,7 @@ const primaryFocusSel = document.getElementById('primary-focus');
 const primaryInverseSel = document.getElementById('primary-inverse');
 const linkColorSel = document.getElementById('link-color');
 const saveTheme = document.getElementById('saveTheme');
+
 const colorsDefaults = {
     primary: '#300479',
     primaryHover: '#2a007a',
@@ -61,3 +62,4 @@ function __DReset(){
     deleteCookie('d-enabled');
     spawnnotify('Modalità dislessia ripristinata ai valori di default', 'debug');
 }
+
