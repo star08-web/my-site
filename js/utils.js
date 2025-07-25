@@ -46,20 +46,59 @@ function copyToClipboard(content, type = "link") {
 
 function calcAge(birth) {
     try {
-        const today = new Date();
-        const birthDate = new Date(birth.replace(/-/g, '/')); // now should work in safari/webkit/call it whatever you want, thanks apple for feeling special about date formats
-        let years = today.getFullYear() - birthDate.getFullYear();
-
-        if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-            years -= 1;
-        }
-        if (isNaN(years) || years <= 0) {
-            spawnnotify('Errore durante il calcolo dell\'età, le informazioni potrebbero essere non aggiornate', 'error');
+        if (!birth || typeof birth !== 'string') {
+            spawnnotify('Data di nascita non valida', 'error');
             return 15;
         }
+
+        const today = new Date();
+
+        const parts = birth.split('-');
+        if (parts.length !== 3) {
+            spawnnotify('Formato data non valido. Usa DD-MM-YYYY', 'error');
+            return 15;
+        }
+        
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            spawnnotify('Data di nascita contiene valori non numerici', 'error');
+            return 15;
+        }
+        
+        const birthDate = new Date(year, month, day);
+
+        if (isNaN(birthDate.getTime()) || 
+            birthDate.getDate() !== day || 
+            birthDate.getMonth() !== month || 
+            birthDate.getFullYear() !== year) {
+            spawnnotify('Data di nascita non valida', 'error');
+            return 15;
+        }
+
+        if (birthDate > today) {
+            spawnnotify('La data di nascita non può essere nel futuro', 'error');
+            return 15;
+        }
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            years -= 1;
+        }
+    
+        if (years < 0 || years > 150) {
+            spawnnotify('Età calcolata non valida', 'error');
+            return 15;
+        }
+        
         return years;
+        
     } catch (error) {
-        spawnnotify(`Errore durante il calcolo dell'età ${error}`, 'error');
+        spawnnotify(`Errore durante il calcolo dell'età: ${error.message}`, 'error');
         return 15;
     }
 }
