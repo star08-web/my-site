@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 box.id = `video-${element.videoId}`;
                 box.innerHTML = `
                 <header>
-                    <img id="thumbnail" src="${element.thumbnail}" alt="${element.title}" style="border-radius: 7px;">
+                    <img id="thumbnail" src="${element.thumbnail}" alt="${element.title}" style="border-radius: 7px;" loading="lazy">
                     <iframe id="miniplayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; border-radius: 7px;"></iframe>
                 </header>
                 <h2>${element.title}</h2>
